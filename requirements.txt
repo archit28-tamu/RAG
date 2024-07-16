@@ -1,0 +1,6 @@
+langchain 
+langchain-community 
+langchain-chroma
+langchain-huggingface
+firecrawl-py
+sentence_transformers
