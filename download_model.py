@@ -1,4 +1,4 @@
-cache_dir = './cache'
+cache_dir = '/scratch/user/archit.gupta/RAG/cache'
 token = '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'
 
 import os

@@ -6,7 +6,7 @@ VECTOR_DB_DIR = './vector_db'
 MODEL_DIR = './models'
 NUM_RELEVANT_DOCS = 3
 EMBEDDING_MODEL = 'paraphrase-MiniLM-L3-v2'
-LLM = 'gemma-2b'
+LLM = 'Meta-Llama-3-8B-Instruct'
 
 QUERY = ['How to create a Dashboard?',
          'What are dashboard filters?',
@@ -157,7 +157,7 @@ else:
     llm = VLLM(
         model=llm_path,
         max_new_tokens=150,
-        temperature=0.0,
+        temperature=0.2,
         verbose=False
     )
     print(f'Loaded LLM {LLM} from {llm_path}')

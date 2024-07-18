@@ -31,5 +31,36 @@ ml GCC/13.2.0
 | distiluse-base-multilingual-cased-v2  | 56.03               |
 
 ## LLMs
-| Model                                 | Avg Time (millisec) | Answer Quality |
-|---------------------------------------|---------------------|----------------|
+| Model                                 | Time for first prompt | Answer Quality | # of Parameters (B) |
+|---------------------------------------|-----------------------|----------------|---------------------|
+| Mistral                               | 8 min                 | Good           | 7                   |
+| Meta-Llama-3-8B-Instruct              | 6.21 min              | Good           | 8                   |
+| gpt2                                  | 6 sec                 | Bad            | 1.5                 |
+| Qwen2-0.5B                            | 10 sec                | Bad            | 0.5                 |
+| DialoGPT-medium                       | 12 sec                | Bad            | 0.147               |
+| distilgpt2                            | 3 sec                 | Bad            | 0.08                |
+| pythia-160m                           | 8 sec                 | Bad            | 0.16                |
+| pythia-410m                           | 23 sec                | Bad            | 0.41                |
+| bloom-560m                            | 23 sec                | Bad            | 0.56                |
+
+## System Configurations for CPU Only
+| Model     | RAM | # of Cores | KV_cache | Time for first prompt | # of CPU blocks |
+|-----------|-----|------------|----------|-----------------------|-----------------|
+| gemma-2b  | 32  | 8          | 4        | 2.15                  | 14563           |
+| gemma-2b  | 32  | 8          | 5        | 2.09                  | 18240           |
+| gemma-2b  | 32  | 8          | 8        | 2.16                  | 29127           |
+| gemma-2b  | 32  | 32         | 4        | 2.12                  | 14563           |
+| gemma-2b  | 32  | 32         | 8        | 2.08                  | 29127           |
+| gemma-2b  | 32  | 32         | 10       | 2.13                  | 36408           |
+| gemma-2b  | 32  | 32         | 16       | Killed                | 58254           |
+| gemma-2b  | 64  | 8          | 4        | 2.09                  | 14563           |
+| gemma-2b  | 64  | 32         | 4        | 2.11                  | 14563           |
+| gemma-2b  | 64  | 32         | 8        | 2.07                  | 29127           |
+| gemma-2b  | 64  | 32         | 10       | 2.07                  | 36408           |
+| gemma-2b  | 128 | 32         | 4        | 2.12                  | 14563           |
+| gemma-2b  | 128 | 32         | 10       | 2.08                  | 36408           |
+| gemma-2b  | 128 | 32         | 12       | 2.08                  | 43690           |
+| gemma-2b  | 128 | 32         | 16       | 2.08                  | 58254           |
+| gemma-2b  | 128 | 32         | 20       | 2.08                  | 72817           |
+| gemma-2b  | 128 | 32         | 24       | 2.07                  | 87381           |
+| gemma-2b  | 128 | 32         | 30       | 2.16                  | 109226          |
