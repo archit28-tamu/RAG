@@ -82,7 +82,7 @@ ml WebProxy
 | Llama-3-6.3b-v0.1                     | 3 sec             | 8                    | 6.3                 |
 | Mistral-v0.3-6B                       | 3 sec             | 7                    | 6                   |
 | Llama-3-8B-Instruct-v0.8              | 4 sec             | 7                    | 8                   |
-| L3-8B-Stheno-v3.2                     | 4 sec             | 8                    | 8                   | seems good
+| L3-8B-Stheno-v3.2                     | 4 sec             | 8 seems good         | 8                   |
 | blossom-v5.1-9b                       | out of memory     |                      | 9                   |
 | gemma-2-9b-it                         | Gemma2 not supp   |                      | 9                   |
 | Yi-1.5-9B-Chat-16K                    | 5 sec             | 8                    | 9                   |
