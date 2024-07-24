@@ -7,6 +7,10 @@
 ```
 srun --nodes=1 --ntasks-per-node=8 --mem=32G --time=03:00:00 --pty bash -i
 ml GCC/13.2.0
+
+for GPU:
+srun --nodes=1 --ntasks-per-node=8 --mem=32G --gres=gpu:rtx:1 --time=03:00:00 --pty bash -i
+ml WebProxy
 ```
 
 # Runtimes
@@ -30,7 +34,7 @@ ml GCC/13.2.0
 | paraphrase-MiniLM-L3-v2               | 9.17                |
 | distiluse-base-multilingual-cased-v2  | 56.03               |
 
-## LLMs
+## LLMs on CPU
 | Model                                 | Time for first prompt | Answer Quality | # of Parameters (B) |
 |---------------------------------------|-----------------------|----------------|---------------------|
 | Mistral                               | 8 min                 | Good           | 7                   |
@@ -64,3 +68,24 @@ ml GCC/13.2.0
 | gemma-2b  | 128 | 32         | 20       | 2.08                  | 72817           |
 | gemma-2b  | 128 | 32         | 24       | 2.07                  | 87381           |
 | gemma-2b  | 128 | 32         | 30       | 2.16                  | 109226          |
+
+## LLMs on GPU
+| Model                                 | Time Avg          | Answer Quality (/10) | # of Parameters (B) |
+|---------------------------------------|-------------- ----|----------------------|---------------------|
+| Mistral-7B-Instruct-v0.3              | out of memory     |                      | 7                   |
+| Meta-Llama-3-8B-Instruct              | 4 sec             | 6                    | 8                   |
+| gpt2                                  | 0 sec             | 1                    | 1.5                 |
+| Qwen2-0.5B                            | 0 sec             | 1                    | 0.5                 |
+| Yi-1.5-6B-Chat                        | 6 sec             | 8                    | 6                   |
+| internlm2_5-7b-chat                   | out of memory     |                      | 7                   |
+| Qwen2-7B-Instruct                     | out of memory     |                      | 7                   |
+| Llama-3-6.3b-v0.1                     | 3 sec             | 8                    | 6.3                 |
+| Mistral-v0.3-6B                       | 3 sec             | 7                    | 6                   |
+| Llama-3-8B-Instruct-v0.8              | 4 sec             | 7                    | 8                   |
+| L3-8B-Stheno-v3.2                     | 4 sec             | 8                    | 8                   | seems good
+| blossom-v5.1-9b                       | out of memory     |                      | 9                   |
+| gemma-2-9b-it                         | Gemma2 not supp   |                      | 9                   |
+| Yi-1.5-9B-Chat-16K                    | 5 sec             | 8                    | 9                   |
+| openchat-3.6-8b-20240522              | 1 sec             | 1                    | 8                   |
+| orca_mini_v7_7b                       |                   |                      |                     |
+| neural-chat-7b-v3-2                   |                   |                      |                     |

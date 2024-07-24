@@ -6,7 +6,7 @@ VECTOR_DB_DIR = './vector_db'
 MODEL_DIR = './models'
 NUM_RELEVANT_DOCS = 3
 EMBEDDING_MODEL = 'paraphrase-MiniLM-L3-v2'
-LLM = 'Meta-Llama-3-8B-Instruct'
+LLM = 'neural-chat-7b-v3-2'
 
 QUERY = ['How to create a Dashboard?',
          'What are dashboard filters?',
@@ -158,7 +158,13 @@ else:
         model=llm_path,
         max_new_tokens=150,
         temperature=0.2,
-        verbose=False
+        verbose=False,
+        enforce_eager=True,
+        # cpu_offload_gb=20,
+        # max_num_sequences=1,
+        trust_remote_code=True,
+        gpu_memory_utilization=1.0,
+        # max_seq_len_to_capture=20000
     )
     print(f'Loaded LLM {LLM} from {llm_path}')
 ########################################################################################
