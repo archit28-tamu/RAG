@@ -6,7 +6,7 @@ VECTOR_DB_DIR = './vector_db'
 MODEL_DIR = './models'
 NUM_RELEVANT_DOCS = 3
 EMBEDDING_MODEL = 'paraphrase-MiniLM-L3-v2'
-LLM = 'neural-chat-7b-v3-2'
+LLM = 'Yi-1.5-6B-Chat'
 
 QUERY = ['How to create a Dashboard?',
          'What are dashboard filters?',
@@ -146,7 +146,8 @@ print('\n**********')
 print('Loading LLM')
 print('***********')
 
-from langchain_community.llms import VLLM
+# from langchain_community.llms import VLLM
+from langchain_huggingface import HuggingFacePipeline
 
 llm_path = os.path.join(MODEL_DIR, LLM)
 
@@ -154,18 +155,29 @@ if not os.path.exists(llm_path):
     print(f"\n{llm_path} DOES NOT EXIST.")
     sys.exit(0)
 else:
-    llm = VLLM(
-        model=llm_path,
-        max_new_tokens=150,
-        temperature=0.2,
-        verbose=False,
-        enforce_eager=True,
-        # cpu_offload_gb=20,
-        # max_num_sequences=1,
-        trust_remote_code=True,
-        gpu_memory_utilization=1.0,
-        # max_seq_len_to_capture=20000
-    )
+    # llm = VLLM(
+    #     model=llm_path,
+    #     max_new_tokens=150,
+    #     temperature=0.2,
+    #     verbose=False,
+    #     enforce_eager=True,
+    #     cpu_offload_gb=20,
+    #     # max_num_sequences=1,
+    #     trust_remote_code=True,
+    #     gpu_memory_utilization=1.0,
+    #     # max_seq_len_to_capture=20000
+    # )
+
+    llm = HuggingFacePipeline.from_model_id(
+    model_id=llm_path,
+    task="text-generation",
+    pipeline_kwargs=dict(
+        max_new_tokens=100,
+        do_sample=False,
+        repetition_penalty=1.03,
+    ),
+)
+
     print(f'Loaded LLM {LLM} from {llm_path}')
 ########################################################################################
 
